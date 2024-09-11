@@ -51,8 +51,9 @@ case "$board" in
 		;;
 	bananapi,bpi-r4|\
 	bananapi,bpi-r4-poe|\
-	cetron,ct3003-stock|\
+	cetron,ct3003|\
 	cetron,ct3003-ubootmod|\
+	konka,komi-a31|\
 	nokia,ea0326gmp)
 		addr=$(cat /sys/class/net/eth0/address)
 		[ "$PHYNBR" = "0" ] && macaddr_add $addr 1 > /sys${DEVPATH}/macaddress
@@ -75,6 +76,7 @@ case "$board" in
 		[ "$PHYNBR" = "0" ] && echo "$addr" > /sys${DEVPATH}/macaddress
 		[ "$PHYNBR" = "1" ] && macaddr_setbit_la $(macaddr_add $addr 1) > /sys${DEVPATH}/macaddress
 		;;
+	cudy,ap3000outdoor-v1|\
 	cudy,m3000-v1|\
 	cudy,wr3000-v1)
 		addr=$(mtd_get_mac_binary bdinfo 0xde00)
